@@ -8,138 +8,228 @@ int main() {
 	int number_method;
 	cout << "Choose one of ten methods to generate pseudo-random numbers (1-10) -> ";
 	cin >> number_method;
-	
+
+	int seed;
+	cout << "Enter the initial value (seed) = ";
+	cin >> seed;
+
+	int sum = 0;
+
+	int a, c, m1, m2, m, d;
 
 	PseudoRandom number;
 	switch (number_method)
 	{
 	case 1:
-		int seed, a, m, c;
-		cout << "Enter seed --> ";
-		cin >> seed;
-
-		cout << "Enter the multiplier <a> --> ";
+		cout << "Enter the multiplier (a) = ";
 		cin >> a;
 
-		cout << "Enter the module <m> --> ";
+		cout << "Enter increment (c) = ";
+		cin >> c;
+
+		cout << "enter the module (m) = ";
 		cin >> m;
 
-		cout << "Enter the increment <ñ> --> ";
-		cin >> c;
-		
-		cout << "Random be like >>> ";
+		cout << "Random be like >>> " << endl;
+
 		for (int i = 0; i < 500; i++) {
-		
-			 seed = number.linear_congruential1(seed, a, m, c);
-			 cout << seed << " " ;
+			cout << seed << " ";
+			histogram1(double(seed) / m);
+			seed = number.linear_congruential1(seed, a, c, m);
 		}
-			break;
-	case 2: 
-		int d;
-		cout << "Enter seed --> ";
-		cin >> seed;
-
-		cout << "Enter the multiplier <a> --> ";
+		display1();
+		break;
+	case 2:
+		cout << "Enter the multiplier (a) = ";
 		cin >> a;
 
-		cout << "Enter the module <m> --> ";
-		cin >> m;
-
-		cout << "Enter the increment <ñ> --> ";
-		cin >> c;
-
-		cout << "Enter the multiplier <d> --> ";
+		cout << "Enter the multiplier (d) = ";
 		cin >> d;
 
+		cout << "Enter increment (c) = ";
+		cin >> c;
 
-		cout << "Random be like >>> ";
-		for (int i = 0; i < 500; i++) {
-
-			seed = number.sqr_linear_congruential2(seed, a, m,d, c);
-			cout << seed << " ";
-		}
-		break;
-	case 3: 
-		
-		cout << "Enter seed --> ";
-		cin >> seed;
-
-		cout << "Enter the module <m> --> ";
+		cout << "enter the module (m) = ";
 		cin >> m;
 
-		cout << "Random be like >>> ";
-		for (int i = 0; i < 500; i++) {
+		cout << "Random be like >>> " << endl;
 
-			seed = number.fibonacci3(seed,m);
+		for (int i = 0; i < 500; i++) {
 			cout << seed << " ";
+			histogram1(double(seed) / m);
+			seed = number.sqr_linear_congruential2(seed, a, c, d, m);
 		}
+		display1();
 		break;
-	
+	case 3:
+		cout << "enter the module (m) = ";
+		cin >> m;
+
+		cout << "Random be like >>> " << endl;
+
+		for (int i = 0; i < 5; i++) {
+			cout << seed << " ";
+			histogram1(double(seed) / m);
+			seed = number.fibonacci3(seed, m);
+		}
+		display1();
+		break;
 	case 4:
-
-		cout << "Enter seed --> ";
-		cin >> seed;
-
-		cout << "Enter the multiplier <a> --> ";
+		cout << "Enter the multiplier (a) = ";
 		cin >> a;
 
-		cout << "Enter the module <m> --> ";
-		cin >> m;
-
-		cout << "Enter the increment <ñ> --> ";
+		cout << "Enter increment (c) = ";
 		cin >> c;
 
-		cout << "Random be like >>> ";
-		for (int i = 0; i < 500; i++) {
+		cout << "enter the module (m) = ";
+		cin >> m;
 
-			seed = number.reverse_linear_congruential4(seed, a,c,m);
+		cout << "Random be like >>> " << endl;
+
+		for (int i = 0; i < 500; i++) {
 			cout << seed << " ";
+			histogram1(double(seed) / m);
+			seed = number.reverse_linear_congruential4(seed, a, c, m);
 		}
+		display1();
 		break;
-	case 5: 
-		cout << "Enter the multiplier <a> --> ";
+	case 5:
+		cout << "Enter the multiplier (a) = ";
 		cin >> a;
 
-		cout << "Enter the module <m> --> ";
+		cout << "Enter increment (c) = ";
+		cin >> c;
+
+		cout << "Enter the module (m1) for first method = ";
+		cin >> m1;
+
+		cout << "Enter the module (m2) for third method = ";
+		cin >> m2;
+
+		cout << "Enter the module (m) = ";
+		cout << m;
+
+		cout << "Random be like >>> " << endl;
+		for (int i = 0; i < 500; i++) {
+			cout << seed << " ";
+			histogram1(double(seed) / m);
+			seed = number.merger5(a, c, m1, m2, m);
+		}
+		display1();
+		break;
+
+	case 6:
+		cout << "Enter the module (m1) for third method = ";
+		cin >> m1;
+
+		cout << "Enter the module (m) = ";
 		cin >> m;
 
-		cout << "Enter the increment <ñ> --> ";
-		cin >> c;
-		cout << "Random be like >>> ";
+		cout << "Random be like >>> " << endl;
 		for (int i = 0; i < 500; i++) {
 
-			seed = number.merger5(a,m,c);
-			cout << seed << " ";
+			seed = number.three_sigma6(seed, m1, m);
 		}
+		cout << endl;
+		display2();
+
 		break;
-	case 6: 
 
-		cout << "Enter seed --> ";
-		cin >> seed;
 
-		cout << "Enter the multiplier <a> --> ";
+	case 7:
+		cout << "Enter the multiplier (a) = ";
 		cin >> a;
 
-		cout << "Enter the module <m> --> ";
-		cin >> m;
+		cout << "Enter the multiplier (d) = ";
+		cin >> d;
 
-		cout << "Enter the increment <ñ> --> ";
+		cout << "Enter increment (c) = ";
 		cin >> c;
-		
 
-		cout << "Random be like >>> ";
-		for (int i = 0; i < 500; i++) {
+		cout << "Enter the module (m1) for first method = ";
+		cin >> m1;
 
-			seed = number.three_sigma6(seed, a,m,c);
-			cout << seed << " ";
+		cout << "Enter the module (m2) for second method = ";
+		cin >> m2;
+
+		cout << "Random be like >>> " << endl;
+		for (int i = 0; i < 250; i++) {
+			seed = number.polar7(seed, a, c, d, m1, m2);
 		}
+		cout << endl;
+		display2();
 		break;
 
-	case 7: break;
-	case 8: break;
-	case 9:  break;
-	case 10: break;
-	default: std::cout << "error"; break;
+	case 8:
+		cout << "Enter the multiplier (a) = ";
+		cin >> a;
+
+		cout << "Enter the multiplier (d) = ";
+		cin >> d;
+
+		cout << "Enter increment (c) = ";
+		cin >> c;
+
+		cout << "Enter the module (m1) for first method = ";
+		cin >> m1;
+
+		cout << "Enter the module (m2) for second method = ";
+		cin >> m2;
+
+		cout << "Random be like >>> " << endl;
+		for (int i = 0; i < 500; i++) {
+
+			seed = number.relations8(seed, a, c, d, m1, m2);
+		}
+		cout << endl;
+		display2();
+		break;
+
+	case 9:
+		cout << "Enter the multiplier (a) = ";
+		cin >> a;
+
+		cout << "Enter the multiplier (d) = ";
+		cin >> d;
+
+		cout << "Enter increment (c) = ";
+		cin >> c;
+
+		cout << "enter the module (m) = ";
+		cin >> m;
+
+		cout << "Random be like >>> " << endl;
+		for (int i = 0; i < 500; i++) {
+			seed = number.logarithm9(seed, a, c, d, m);
+		}
+		display3();
+		break;
+	case 10:
+		cout << "Enter the multiplier (a) = ";
+		cin >> a;
+
+		cout << "Enter the multiplier (d) = ";
+		cin >> d;
+
+		cout << "Enter increment (c) = ";
+		cin >> c;
+
+		cout << "Enter the module (m1) for first method = ";
+		cin >> m1;
+
+		cout << "Enter the module (m2) for second method = ";
+		cin >> m2;
+
+		cout << "Random be like >>> " << endl;
+		for (int i = 0; i < 500; i++) {
+			seed = number.ahrens(seed, a, c, d, m1, m2);
+		}
+		display3();
+		break;
+
+	default: std::cout << "Error!"; break;
 	}
+
+
 	return 0;
 }
